@@ -84,34 +84,28 @@ class _DetailScreenState extends State<DetailScreen> {
                   const SizedBox(
                     height: 200,
                   ),
-                  Column(
-                    children: [
-                      showMovieDetails(
-                        movie: movie,
-                      ),
-                    ],
+                  showMovieDetails(
+                    movie: movie,
                   ),
                   const SizedBox(
                     height: 80,
                   ),
-                  SizedBox(
-                    child: Center(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.yellow,
-                          minimumSize: const Size(300, 65),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellow,
+                        minimumSize: const Size(300, 65),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Text(
-                          'Buy ticket',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                          ),
+                      ),
+                      child: const Text(
+                        'Buy ticket',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     ),

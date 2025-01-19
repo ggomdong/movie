@@ -19,7 +19,7 @@ FutureBuilder<List<MovieModel>> makeMovieList({
     ),
     builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
-        return const CircularProgressIndicator();
+        return const CircularProgressIndicator.adaptive();
       } else if (snapshot.hasError) {
         return Text(
           snapshot.error.toString(),
@@ -78,7 +78,10 @@ FutureBuilder<MovieDetailModel> showMovieDetails({
     ),
     builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
-        return const CircularProgressIndicator();
+        return const SizedBox(
+          height: 300, // FutureBuilder 높이 고정
+          child: Center(child: CircularProgressIndicator.adaptive()),
+        );
       } else if (snapshot.hasError) {
         return Text(
           snapshot.error.toString(),
