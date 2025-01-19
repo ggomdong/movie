@@ -51,6 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _onScaffoldTap() {
+    FocusScope.of(context).unfocus();
+  }
+
   @override
   void dispose() {
     _textEditingController.dispose();
@@ -59,64 +63,67 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: CupertinoSearchTextField(
-          controller: _textEditingController,
-          onChanged: _onSearchChanged,
-        ),
-      ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 20,
+    return GestureDetector(
+      onTap: _onScaffoldTap,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: CupertinoSearchTextField(
+            controller: _textEditingController,
+            onChanged: _onSearchChanged,
           ),
-          child: DefaultTextStyle(
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 25,
-              fontWeight: FontWeight.w800,
+        ),
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+              horizontal: 20,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Popular Movies',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                makeMovieList(
-                  movies: popularMovies,
-                  boxWidth: 335,
-                  boxHeight: 250,
-                  isTitle: false,
-                  category: HomeScreen.popular,
-                ),
-                const Text(
-                  'Now in Cinemas',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                makeMovieList(
-                  movies: nowMovies,
-                  category: HomeScreen.now,
-                ),
-                const Text(
-                  'Coming soon',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                makeMovieList(
-                  movies: comingMovies,
-                  category: HomeScreen.coming,
-                ),
-              ],
+            child: DefaultTextStyle(
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+                fontWeight: FontWeight.w800,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Popular Movies',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  makeMovieList(
+                    movies: popularMovies,
+                    boxWidth: 335,
+                    boxHeight: 250,
+                    isTitle: false,
+                    category: HomeScreen.popular,
+                  ),
+                  const Text(
+                    'Now in Cinemas',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  makeMovieList(
+                    movies: nowMovies,
+                    category: HomeScreen.now,
+                  ),
+                  const Text(
+                    'Coming soon',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  makeMovieList(
+                    movies: comingMovies,
+                    category: HomeScreen.coming,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
